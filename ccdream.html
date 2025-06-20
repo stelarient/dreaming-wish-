@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dreaming Wish ☁️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap" rel="stylesheet"/>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      background-image: url('https://www.transparenttextures.com/patterns/white-diamond.png');
+    }
+
+    header {
+      background: linear-gradient(135deg, #c7d2fe, #e0f2fe);
+      padding: 60px 20px 80px;
+      text-align: center;
+      border-bottom: 3px dashed #a5b4fc;
+      position: relative;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6d/LightStarsBackground.png'), linear-gradient(135deg, #c7d2fe, #e0f2fe);
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      margin: 0;
+      font-size: 3.5em;
+      color: #f3f9ff;
+      text-shadow: 0 0 10px #60a5fa, 0 0 18px #3b82f6, 0 0 28px #1e40af;
+      border: 3px solid #c7d2fe;
+      display: inline-block;
+      padding: 12px 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: brillar 3s infinite alternate;
+    }
+
+    @keyframes brillar {
+      from {
+        text-shadow: 0 0 10px #60a5fa, 0 0 18px #3b82f6, 0 0 28px #1e40af;
+      }
+      to {
+        text-shadow: 0 0 14px #bfdbfe, 0 0 24px #3b82f6, 0 0 32px #1e40af;
+      }
+    }
+
+    .subtitulo {
+      font-size: 1.2em;
+      color: #e0e7ff;
+      margin-top: 15px;
+      text-shadow: 0 0 8px #60a5fa, 0 0 12px #3b82f6;
+    }
+
+    .decoraciones {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2em;
+    }
+
+    .decoraciones::before {
+      content: "\2728\2601";
+      font-size: 1.8em;
+      position: absolute;
+      left: -60px;
+      animation: flotar 5s infinite ease-in-out;
+    }
+
+    .decoraciones span {
+      margin-left: 10px;
+      animation: flotar 6s infinite ease-in-out;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .icono-deco {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.8em;
+      animation: girar 4s linear infinite;
+    }
+
+    @keyframes girar {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #dbeafe;
+      padding: 10px 0;
+      border-bottom: 2px solid #bfdbfe;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #4f46e5;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s, transform 0.3s;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    nav a:hover {
+      color: #1e3a8a;
+      transform: scale(1.1);
+    }
+
+    nav a.active {
+      color: #1e3a8a;
+      border-bottom: 3px solid #6366f1;
+      padding-bottom: 5px;
+    }
+
+    nav a.active::after {
+      content: " ★";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6366f1;
+      font-size: 1.2em;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .post {
+  ...
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  display: none;
+}
+
+.post.active {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+
+
+    .emoji {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5em;
+    }
+
+    /* GIF un poco más grande */
+    .gif-pequeño {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      display: block;
+      margin: 20px auto;
+      border-radius: 12px;
+      border: 2px solid #a5b4fc;
+      box-shadow: 0 2px 6px rgba(101, 78, 255, 0.3);
+      background-color: white;
+    }
+
+    footer {
+      background-color: #dbeafe;
+      color: #1e3a8a;
+      text-align: center;
+      padding: 15px 10px;
+      font-weight: 600;
+      border-top: 2px solid #bfdbfe;
+      font-size: 1em;
+      margin-top: 40px;
+      user-select: none;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .media-grid img,
+    .media-grid video {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      flex: 1 1 auto;
+      object-fit: cover;
+    }
+
+    /* Videos fuera de media-grid */
+    video {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: block;
+      margin: 20px auto;
+    }
+
+    /* Video principal más grande */
+    #inicio video {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: block;
+      margin: 20px auto;
+    }
+/* Wishlist */
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  gap: 15px;
+}
+
+.wishlist-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #c7d2fe;
+}
+
+.wishlist-text {
+  flex-grow: 1;
+  font-size: 1em;
+}
+
+.wishlist-heart {
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.wishlist-heart:hover {
+  transform: scale(1.2);
+}
+
+.wishlist-heart.checked {
+  color: #f43f5e;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dreaming Wish</h1>
+    <p class="subtitulo">Un diario lleno de nubes, colores y memorias bonitas ☁️🎀</p>
+    <div class="decoraciones">
+      <span>☁️</span>
+      <span>💖</span>
+      <span>☁️</span>
+    </div>
+    <div class="icono-deco">💫</div>
+  </header>
+
+  <nav>
+    <a href="#" data-target="inicio" class="active">Inicio</a>
+    <a href="#" data-target="personal">Personal</a>
+    <a href="#" data-target="intereses">Intereses</a>
+    <a href="#" data-target="fotos">How I Feel Today</a>
+    <a href="#" data-target="recuerdos">Recuerdos</a>
+    <a href="#" data-target="videojuegos">Videojuegos</a>
+    <a href="#" data-target="wishlist">Wish List</a>
+
+
+  </nav>
+
+  <div class="container">
+    <div id="inicio" class="post active">
+      <div class="emoji">☁️</div>
+      <h2>🎬 Mi Día en Video</h2>
+      <p>Hoy fue un día especial. Lo grabé todo para compartirlo contigo 💖</p>
+      <video controls>
+        <source src="tu-video.mp4" type="video/mp4">
+        Tu navegador no soporta este video.
+      </video>
+    </div>
+
+    <div id="personal" class="post">
+      <div class="emoji">📷</div>
+      <h2>✨ Mi Día en Fotos</h2>
+      <p>Aquí iré agregando algunas fotos lindas de lo que viví hoy ✨</p>
+      <div class="media-grid">
+        <img src="foto1.jpg" alt="Foto linda de mi día" />
+        <img src="foto2.jpg" alt="Otra foto bonita del día" />
+      </div>
+    </div>
+
+    <div id="intereses" class="post">
+      <div class="emoji">💿</div>
+      <h2>📀 Review: Mis álbumes favoritos recientes</h2>
+      <p>Estos dos álbumes se han vuelto parte importante de mi playlist diaria. Cada canción tiene algo único y especial ✨</p>
+      <h3>NCT DREAM – <em>DREAM( )SCAPE</em></h3>
+      <p>Incluye joyitas como <strong>"BOX"</strong>, <strong>"icantfeelanything"</strong> y <strong>"Smoothie"</strong>. ¡Un viaje de emociones y ritmos frescos!</p>
+      <iframe style="border:0;width:100%;height:400px;" src="https://open.spotify.com/embed/album/2urIpiAu1CySTyyNuQQxcz?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+      <h3>beabadoobee – <em>This Is How Tomorrow Moves</em></h3>
+      <p>Un álbum lleno de sensibilidad, nostalgia y letras que llegan al corazón. Perfecto para tardes tranquilas ☁️</p>
+      <iframe style="border:0;width:100%;height:400px;" src="https://open.spotify.com/embed/album/5oT7xqbRbQCevZ0XC5aBFu?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+
+    <div id="fotos" class="post">
+      <div class="emoji">🎞️</div>
+      <h2>🌸 How I Feel Today</h2>
+      <p>Así me sentí toda la semana :3</p>
+      <img class="gif-pequeño" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOG05aWF2Y3Jnb2VxOW5wY21tMnl5YTJteXZndHBta2puZmduNTU2ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tFSqMSMnzPRTAdvKyr/giphy.gif" alt="GIF animado representando sentimientos de la semana" />
+    </div>
+
+    <div id="recuerdos" class="post">
+      <div class="emoji">🎓</div>
+      <h2>📹 Recuerdos de mi última semana de clases</h2>
+      <p>Videos que me hacen sonreír y recordar esos días inolvidables 💕</p>
+      <div class="media-grid">
+        <video controls>
+          <source src="recuerdo1.mp4" type="video/mp4">
+          Tu navegador no soporta este video.
+        </video>
+        <video controls>
+          <source src="recuerdo2.mp4" type="video/mp4">
+          Tu navegador no soporta este video.
+        </video>
+      </div>
+    </div>
+
+    <div id="videojuegos" class="post">
+      <div class="emoji">🎮</div>
+      <h2>🎮 Mis juegos favoritos del momento</h2>
+      <p>Estos son algunos de los videojuegos que más he disfrutado últimamente y los personajes que he logrado sacar así como un pequeño gameplay de cada uno :3</p>
+      <div class="media-grid">
+        <img src="juego1.jpg" alt="Imagen del juego 1" />
+        <img src="juego2.jpg" alt="Imagen del juego 2" />
+      </div>
+      <video controls>
+        <source src="gameplay.mp4" type="video/mp4">
+        Tu navegador no soporta este video.
+      </video>
+    </div>
+
+<div id="wishlist" class="post">
+  <div class="emoji">🛒</div>
+  
+ 
+  <div class="wishlist-item">
+    <img src="https://i.imgur.com/Je7lJdL.png" alt="Peluche de Kirby" />
+    <div class="wishlist-text">✨ Peluche gigante de Kirby</div>
+    <div class="wishlist-heart">♡</div>
+  </div>
+
+  <div class="wishlist-item">
+    <img src="https://i.imgur.com/y09pW6W.png" alt="Audífonos retro" />
+    <div class="wishlist-text">🎧 Audífonos bonitos estilo retro</div>
+    <div class="wishlist-heart">♡</div>
+  </div>
+
+  <div class="wishlist-item">
+    <img src="https://i.imgur.com/bUOkV1D.png" alt="Álbum Ghibli" />
+    <div class="wishlist-text">📖 Álbum ilustrado de Studio Ghibli</div>
+    <div class="wishlist-heart">♡</div>
+  </div>
+
+  <div class="wishlist-item">
+    <img src="https://i.imgur.com/HMSgxTg.png" alt="Ropa Y2K" />
+    <div class="wishlist-text">🌸 Ropa cute estilo Y2K</div>
+    <div class="wishlist-heart">♡</div>
+  </div>
+
+  <div class="wishlist-item">
+    <img src="https://i.imgur.com/7h3KZrp.png" alt="Consola portátil" />
+    <div class="wishlist-text">🎮 Consola portátil para juegos indie</div>
+    <div class="wishlist-heart">♡</div>
+  </div>
+</div>
+
+</div>
+
+    <audio autoplay loop>
+      <source src="tu-musica.mp3" type="audio/mpeg">
+      Tu navegador no soporta música en línea.
+    </audio>
+  </div>
+
+  <footer>
+    © 2025 Dreaming Wish | Diseñado con ☁️ y 💖
+  </footer>
+
+  <script> const corazones = document.querySelectorAll('.wishlist-heart');
+corazones.forEach(corazon => {
+  corazon.addEventListener('click', () => {
+    corazon.classList.toggle('checked');
+    corazon.textContent = corazon.classList.contains('checked') ? '♥' : '♡';
+  });
+});
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('nav a');
+      const posts = document.querySelectorAll('.post');
+
+      function mostrarSeccion(id) {
+        posts.forEach(post => {
+          post.classList.toggle('active', post.id === id);
+        });
+
+        links.forEach(link => {
+          link.classList.toggle('active', link.dataset.target === id);
+        });
+      }
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          mostrarSeccion(link.dataset.target);
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+      });
+    });
+  </script>
+</body>
+</html> 
